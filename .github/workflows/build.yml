@@ -1,6 +1,5 @@
 name: Android APK
 on:
-  push:
   workflow_dispatch:
 permissions:
   contents: read
@@ -14,6 +13,8 @@ jobs:
           distribution: temurin
           java-version: '17'
       - uses: gradle/actions/setup-gradle@v4
+      - name: Create debug keystore
+        run: keytool -genkeypair -v -keystore debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
       - name: Build debug APK
         run: ./gradlew assembleDebug --no-daemon
       - uses: actions/upload-artifact@v4

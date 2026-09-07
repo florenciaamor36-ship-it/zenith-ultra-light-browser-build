@@ -24,7 +24,8 @@ import java.util.UUID
  * 4. Incognito Data Purge: Complete erasure of cookies, DOM storage, history, and cache when
  *    incognito tabs are closed.
  */
-class TabManager {
+class TabManager(private val context: Context) {
+    private val statePrefs = context.getSharedPreferences("aero_web_state", Context.MODE_PRIVATE)
 
     private val _tabs = MutableStateFlow<List<WebTab>>(emptyList())
     val tabs: StateFlow<List<WebTab>> = _tabs.asStateFlow()
@@ -43,10 +44,11 @@ class TabManager {
         isIncognito: Boolean = false,
         isForceDark: Boolean = false
     ): WebTab {
+        val initialUrl = if (!isIncognito && url == "https://www.google.com") statePrefs.getString("last_url", url) ?: url else url
         val newTab = WebTab(
             id = UUID.randomUUID().toString(),
             title = if (isIncognito) "Incognito Tab" else "New Tab",
-            url = url,
+            url = initialUrl,
             isIncognito = isIncognito,
             isDarkModeEnabled = isForceDark
         )
@@ -83,7 +85,7 @@ class TabManager {
         val index = currentTabs.indexOf(tabToClose)
 
         // Destroy WebView and clean native memory
-        WebViewFactory.destroyWebViewSafely(tabToClose.webView)
+        WebViewFactory.destroyWebViewSafely(tabToClose.webView, clearBrowsingData = tabToClose.isIncognito)
         tabToClose.webView = null
 
         // If incognito, execute aggressive privacy & storage purge
@@ -119,7 +121,7 @@ class TabManager {
         }
 
         tabsToClose.forEach { tab ->
-            WebViewFactory.destroyWebViewSafely(tab.webView)
+            WebViewFactory.destroyWebViewSafely(tab.webView, clearBrowsingData = tab.isIncognito)
             tab.webView = null
         }
 
@@ -160,7 +162,11 @@ class TabManager {
             current.copy(
                 title = if (!title.isNullOrBlank()) title else current.title,
                 url = if (!url.isNullOrBlank()) url else current.url
-            )
+            ).also { updated ->
+                if (!updated.isIncognito && !updated.url.startsWith("about:") && !updated.url.startsWith("data:")) {
+                    statePrefs.edit().putString("last_url", updated.url).apply()
+                }
+            }
         }
     }
 
@@ -190,7 +196,7 @@ class TabManager {
                     if (level >= ComponentCallbacks2.TRIM_MEMORY_RUNNING_LOW ||
                         level >= ComponentCallbacks2.TRIM_MEMORY_MODERATE
                     ) {
-                        WebViewFactory.destroyWebViewSafely(wv)
+                        WebViewFactory.destroyWebViewSafely(wv, clearBrowsingData = false)
                         tab.webView = null
                     }
                 }

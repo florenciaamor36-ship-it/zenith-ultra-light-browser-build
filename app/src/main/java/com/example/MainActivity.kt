@@ -2,6 +2,7 @@ package com.example
 
 import android.app.Activity
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -202,6 +203,7 @@ class MainActivity : ComponentActivity() {
                     when {
                         customVideoView != null -> {
                             viewModel.hideCustomView()
+                            requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                         }
                         isFindInPageActive -> {
                             viewModel.closeFindInPage(activeTab?.webView)
@@ -543,10 +545,12 @@ fun TabWebViewHost(
                 tabId = tab.id,
                 tabManager = viewModel.tabManager,
                 onShowCustomViewCallback = { view, callback ->
+                    (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
                     viewModel.showCustomView(view, callback)
                 },
                 onHideCustomViewCallback = {
                     viewModel.hideCustomView()
+                    (context as? Activity)?.requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED
                 },
                 onGeolocationPrompt = { origin, callback ->
                     viewModel.geolocationPrompt.value = GeolocationState(origin, callback)

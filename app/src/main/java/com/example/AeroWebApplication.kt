@@ -22,7 +22,7 @@ class AeroWebApplication : Application() {
     lateinit var repository: BrowserRepository
         private set
 
-    val tabManager = TabManager()
+    val tabManager by lazy { TabManager(this) }
 
     override fun onCreate() {
         super.onCreate()

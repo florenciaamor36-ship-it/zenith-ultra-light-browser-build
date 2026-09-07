@@ -147,15 +147,17 @@ object WebViewFactory {
     /**
      * Complete and safe destruction of a WebView instance to prevent native memory leaks.
      */
-    fun destroyWebViewSafely(webView: WebView?) {
+    fun destroyWebViewSafely(webView: WebView?, clearBrowsingData: Boolean = false) {
         if (webView == null) return
         try {
             webView.stopLoading()
             webView.onPause()
             webView.pauseTimers()
             (webView.parent as? ViewGroup)?.removeView(webView)
-            webView.clearHistory()
-            webView.clearCache(true)
+            if (clearBrowsingData) {
+                webView.clearHistory()
+                webView.clearCache(true)
+            }
             webView.loadUrl("about:blank")
             webView.removeAllViews()
             webView.destroy()

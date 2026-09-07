@@ -71,7 +71,8 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
     private val _searchEngine = MutableStateFlow(SearchEngine.GOOGLE)
     val searchEngine: StateFlow<SearchEngine> = _searchEngine.asStateFlow()
 
-    private val _isBottomToolbar = MutableStateFlow(true)
+    // La barra de navegación queda arriba por defecto, como en un navegador tradicional.
+    private val _isBottomToolbar = MutableStateFlow(false)
     val isBottomToolbar: StateFlow<Boolean> = _isBottomToolbar.asStateFlow()
 
     // Sheet / Dialog Visibility

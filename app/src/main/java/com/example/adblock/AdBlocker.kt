@@ -1,5 +1,6 @@
 package com.example.adblock
 
+import android.content.Context
 import android.net.Uri
 import android.webkit.WebResourceResponse
 import java.io.ByteArrayInputStream
@@ -19,6 +20,15 @@ object AdBlocker {
 
     @Volatile
     var isEnabled: Boolean = true
+
+    fun loadBundledFilters(context: Context) {
+        runCatching {
+            context.assets.open("ad_domains.txt").bufferedReader().useLines { lines ->
+                lines.map(String::trim).filter { it.isNotEmpty() }.forEach(BLOCKED_DOMAINS::add)
+            }
+            resolvedCache.clear()
+        }
+    }
 
     // Set of blocked domains and tracking servers (compiled from StevenBlack & EasyList top ad servers)
     private val BLOCKED_DOMAINS = HashSet<String>(256).apply {
@@ -144,8 +154,6 @@ object AdBlocker {
         add("neustar.biz")
         add("tapad.com")
         add("drawbridge.com")
-        // Reglas de dominio generadas desde EasyList y EasyPrivacy.
-        addAll(BUNDLED_FILTER_DOMAINS)
     }
 
     // Fast cache for previously resolved domains to avoid repeated parsing

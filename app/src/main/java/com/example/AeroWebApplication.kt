@@ -7,7 +7,7 @@ import com.example.data.repository.BrowserRepository
 import com.example.tabs.TabManager
 
 /**
- * Main Application Class for AeroWeb Browser.
+ * Main Application Class for AeroWeb.
  *
  * Performance Tuning & Battery Optimizations:
  * 1. Global Singleton Scopes: Prevents multiple database connection pools or duplicate host sets.
@@ -29,8 +29,8 @@ class AeroWebApplication : Application() {
         database = BrowserDatabase.getInstance(this)
         repository = BrowserRepository(database)
 
-        // AdBlocker is pre-initialized statically
         AdBlocker.isEnabled = true
+        AdBlocker.loadBundledFilters(this)
     }
 
     override fun onTrimMemory(level: Int) {

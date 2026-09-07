@@ -1,7 +1,6 @@
 package com.example.adblock
 
-/** Generated from EasyList/EasyPrivacy domain rules. */
-internal val BUNDLED_FILTER_DOMAINS = setOf(
+private fun filterChunk0() = setOf(
     "000491b06a.com",
     "0017c6c37c.com",
     "0019x.com",
@@ -502,6 +501,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "2zxg8qlei23bc8h.cfd",
     "3000fromenterprises.net",
     "300daytravel.com",
+)
+private fun filterChunk1() = setOf(
     "300statistics.net",
     "301redirect.site",
     "302396f6ae.com",
@@ -1002,6 +1003,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "72a490562a.com",
     "72h1i16uzmbkvpn2e5.cfd",
     "72hdgb5o.de",
+)
+private fun filterChunk2() = setOf(
     "72rtlmvk2213hluu14qh7i5qxgnl8gr.cfd",
     "730fcb332f.com",
     "734map.net",
@@ -1502,6 +1505,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "abongorigid.cyou",
     "abonnementtripleexplore.com",
     "aboriginalimpedimentappreciate.com",
+)
+private fun filterChunk3() = setOf(
     "aboriginesnut.com",
     "aboriginesprimary.com",
     "abortedbible.cyou",
@@ -2002,6 +2007,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "adgebra.co.in",
     "adgebra.in",
     "adgitize.com",
+)
+private fun filterChunk4() = setOf(
     "adglare.net",
     "adglidepro.com",
     "adgoi.com",
@@ -2502,6 +2509,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "advertising365.com",
     "advertisingiq.com",
     "advertisoo.com",
+)
+private fun filterChunk5() = setOf(
     "advertjunction.com",
     "advertlets.com",
     "advertnative.com",
@@ -3002,6 +3011,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "ajourerabbity.com",
     "ajowanscomals.qpon",
     "ajptwiopvptab.website",
+)
+private fun filterChunk6() = setOf(
     "ajrarkrzalpi.in",
     "ajrkm1.com",
     "ajrkm3.com",
@@ -3502,6 +3513,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "anatumdezincallured.qpon",
     "anaywyvernsstickle.cfd",
     "anblamsantapex.cyou",
+)
+private fun filterChunk7() = setOf(
     "ancestorheadquarters.com",
     "ancestry.com",
     "anchbatic.co.in",
@@ -4002,6 +4015,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "arpdscthcygxt.site",
     "arpenexcite.cfd",
     "arpoyoiriphet.space",
+)
+private fun filterChunk8() = setOf(
     "arracekambou.shop",
     "arracksoapsud.shop",
     "arrangedateslocally.com",
@@ -4502,6 +4517,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "awbbcre.com",
     "awbbjmp.com",
     "awberaurir.com",
+)
+private fun filterChunk9() = setOf(
     "awbrwryaeozmj.top",
     "awbrwrywkwqwj.top",
     "awcdwdfygrroo.store",
@@ -5002,6 +5019,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "bats.video.yahoo.com",
     "batteryagatha.qpon",
     "battledburs.qpon",
+)
+private fun filterChunk10() = setOf(
     "battleickhope.com",
     "battlescalpelrut.com",
     "battpkt.cyou",
@@ -5502,6 +5521,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "beydomenamels.shop",
     "beyondpayors.com",
     "beyourxfriend.com",
+)
+private fun filterChunk11() = setOf(
     "bezilwholejules.cfd",
     "bf-ad.net",
     "bf002bbbbb.com",
@@ -6002,6 +6023,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "blzctuubmxcjo.site",
     "blzuqiqqvosqt.online",
     "bm5unauv.xyz",
+)
+private fun filterChunk12() = setOf(
     "bmastxiarsrug.online",
     "bmbdfrchnenhy.store",
     "bmbozsjricjdj.store",
@@ -6502,6 +6525,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "brighteroption.com",
     "brightestmarriagegrape.com",
     "brightforesthill.com",
+)
+private fun filterChunk13() = setOf(
     "brightline.tv",
     "brightlygauntlet.com",
     "brightshanbury.qpon",
@@ -7002,6 +7027,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "byprechaos.cfd",
     "byquobikgiayn.online",
     "byracucosopenu.com",
+)
+private fun filterChunk14() = setOf(
     "byrlingnonfluxdid.cyou",
     "byrpspiwbqiim.space",
     "byryqaysgfpwz.website",
@@ -7502,6 +7529,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "cbzjerbxjdiph.online",
     "cbzxy.com",
     "cc-dt.com",
+)
+private fun filterChunk15() = setOf(
     "cc.cc",
     "cc33b86bbf.com",
     "cc38229b6c.com",
@@ -8002,6 +8031,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "chomageaiming.shop",
     "chookybilsted.qpon",
     "choosefi.com",
+)
+private fun filterChunk16() = setOf(
     "chooseroverlaidspecies.com",
     "choppedremains.com",
     "choralkesse.shop",
@@ -8502,6 +8533,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "cmdfmbugzwjkg.site",
     "cmdgblcprtmzu.site",
     "cmdtubyfwosoa.online",
+)
+private fun filterChunk17() = setOf(
     "cmfads.com",
     "cmiupqlouwnnw.website",
     "cmkhsigydgefs.site",
@@ -9002,6 +9035,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "contributorcoming.com",
     "contributorshaveangry.com",
     "contriveddisparage.com",
+)
+private fun filterChunk18() = setOf(
     "controlslaverystuffing.com",
     "conusesstare.cfd",
     "convenienceshooting.com",
@@ -9502,6 +9537,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "croea.com",
     "croefyhjjkzhg.site",
     "crofluoryltaka.qpon",
+)
+private fun filterChunk19() = setOf(
     "crogctnujttuy.site",
     "croiszeroed.qpon",
     "crojikphytoid.qpon",
@@ -10002,6 +10039,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "d58bdec688.com",
     "d594f004f4.com",
     "d5c1b32380.com",
+)
+private fun filterChunk20() = setOf(
     "d5d26b2710.com",
     "d62391e0b0.com",
     "d6468dab54.com",
@@ -10353,6 +10392,7 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "ddmkypkhddtsl.online",
     "ddmsvcltbyjoc.store",
     "ddngkgnlirzsv.site",
+    "ddnseqctvkzpb.site",
     "ddome-tag.blablacar.com",
     "ddrsemxv.com",
     "ddxiejwiegzxa.website",
@@ -10501,6 +10541,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "degasdiduced.cyou",
     "degeneratebasket.com",
     "degeronium.com",
+)
+private fun filterChunk21() = setOf(
     "deghooda.net",
     "degreedaspirin.shop",
     "degreedistance.cfd",
@@ -11001,6 +11043,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "disciplineebony.com",
     "discobar.space",
     "disconnectran.com",
+)
+private fun filterChunk22() = setOf(
     "discontentcocoamatters.com",
     "discossixsome.cfd",
     "discountplacidlysymphony.com",
@@ -11501,6 +11545,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "dpfwqzjkavjmb.site",
     "dphheyqbwgaau.online",
     "dpidqeyalnpgn.online",
+)
+private fun filterChunk23() = setOf(
     "dpiixydxabnkh.site",
     "dpkscisydbyzp.space",
     "dpmsrv.com",
@@ -12001,6 +12047,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "dsxtea.com",
     "dsxtny.com",
     "dsxwbg.com",
+)
+private fun filterChunk24() = setOf(
     "dsyaae.com",
     "dsyatr.com",
     "dsybif.com",
@@ -12501,6 +12549,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "ebwqpnvtwddry.site",
     "ebxbpcueiftlc.online",
     "ebxueustknziw.site",
+)
+private fun filterChunk25() = setOf(
     "ebz.io",
     "ec.thredup.com",
     "ec0d919893.com",
@@ -13001,6 +13051,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "emdnginrfpuqnf.com",
     "emdnriustcngd.website",
     "emediate.dk",
+)
+private fun filterChunk26() = setOf(
     "emendedpenest.cyou",
     "emendexion.cyou",
     "ementseconom.org",
@@ -13501,6 +13553,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "essayads.com",
     "essaycoupons.com",
     "essaylogicdoubt.com",
+)
+private fun filterChunk27() = setOf(
     "essedaauding.com",
     "essencereferencetummy.com",
     "essential-trash.com",
@@ -14001,6 +14055,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "f.cdngeek.com",
     "f.pie.org",
     "f00e275c9a.com",
+)
+private fun filterChunk28() = setOf(
     "f06f6cd6ce.com",
     "f07neg4p.de",
     "f0d974daed.com",
@@ -14501,6 +14557,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "fggovwtouynec.site",
     "fghhyntrkwikf.online",
     "fghpitdrwjbbr.space",
+)
+private fun filterChunk29() = setOf(
     "fghwqfybjktvq.space",
     "fgjsfrafgkibz.site",
     "fglee.com",
@@ -15001,6 +15059,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "fndvkouekeevn.online",
     "fnemycyfd.com",
     "fnfprkylegylz.online",
+)
+private fun filterChunk30() = setOf(
     "fngjuhuiommfv.online",
     "fngvepnjonsdl.online",
     "fnieftbduxjdr.online",
@@ -15501,6 +15561,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "fstsspfwthukh.site",
     "fsuwiwvhtcfzm.space",
     "ft.com",
+)
+private fun filterChunk31() = setOf(
     "ft8wc5lywzb9r8.cfd",
     "ftactjstzvmyl.site",
     "ftaqmsqzmbqxy.space",
@@ -16001,6 +16063,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "gawneytae.cfd",
     "gaxkyokrghyts.online",
     "gaxyssprvcejy.site",
+)
+private fun filterChunk32() = setOf(
     "gayadnetwork.com",
     "gayadpros.com",
     "gaycatfollyerpolity.cyou",
@@ -16501,6 +16565,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "glassmilheart.com",
     "glassmoni.researchgate.net",
     "glassvisual.pro",
+)
+private fun filterChunk33() = setOf(
     "glaucomaspiltunmatched.com",
     "glaurydhan.qpon",
     "glazereeks.com",
@@ -17001,6 +17067,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "greenads.org",
     "greenandhappiness.com",
     "greenfox.ink",
+)
+private fun filterChunk34() = setOf(
     "greenlinknow.com",
     "greenplasticdua.com",
     "greeslumpier.cyou",
@@ -17501,6 +17569,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "hahuxjnpasaob.site",
     "hai8g.com",
     "haikunmisaim.cyou",
+)
+private fun filterChunk35() = setOf(
     "hailbrunchsharpen.com",
     "hailiixvvazmt.site",
     "hailingoilyoliban.cfd",
@@ -18001,6 +18071,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "hfhmqcggyjcne.online",
     "hfkamhcbicmqe.space",
     "hflpchbqhobkg.website",
+)
+private fun filterChunk36() = setOf(
     "hflxmfjkugjeh.site",
     "hfnfoupaytndf.space",
     "hfnxsdjtwyopi.site",
@@ -18501,6 +18573,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "hotboysnearby.net",
     "hotels.com",
     "hotelscombined.com.au",
+)
+private fun filterChunk37() = setOf(
     "hotgvibe.com",
     "hotkabachok.com",
     "hotlinevarietymorrow.com",
@@ -19001,6 +19075,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "ibceebobwbhdu.space",
     "ibcflijbwbhbx.space",
     "ibdhurhzedcpx.online",
+)
+private fun filterChunk38() = setOf(
     "ibeeckaidse.net",
     "iberismnuntius.com",
     "iberismoffish.cfd",
@@ -19501,6 +19577,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "impliednauseous.com",
     "implix.com",
     "importantoperativestudied.com",
+)
+private fun filterChunk39() = setOf(
     "importantputrescent.com",
     "importclearanceblocks.com",
     "imposeengild.cyou",
@@ -20001,6 +20079,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "invariableapathy.com",
     "invasiondiscipleburglary.com",
     "investalepregnancy.com",
+)
+private fun filterChunk40() = setOf(
     "investigateisolateddepressed.com",
     "investigateproxyoily.com",
     "investigationdiscovery.com",
@@ -20501,6 +20581,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "jaguarinstils.cfd",
     "jaguarsoutwent.qpon",
     "jahvistcleekyimplial.cyou",
+)
+private fun filterChunk41() = setOf(
     "jahwgcaskcxdl.space",
     "jaimeecartebung.qpon",
     "jainapedicle.cyou",
@@ -21001,6 +21083,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "jodelfondle.cyou",
     "joeyesfavn.cfd",
     "jofddomgfztan.website",
+)
+private fun filterChunk42() = setOf(
     "joggingavenge.com",
     "joggo.run",
     "jogryvgycqjph.store",
@@ -21501,6 +21585,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "k8jc6jomk86fji.rest",
     "k8zy.com",
     "kaadqpoorrhsy.site",
+)
+private fun filterChunk43() = setOf(
     "kaascypher.com",
     "kabfoody.cyou",
     "kabmekslhkicv.space",
@@ -22001,6 +22087,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "klevvjrjyjrez.website",
     "klfxpnwgqasds.space",
     "klgxuwphntkxr.space",
+)
+private fun filterChunk44() = setOf(
     "klgyqkigeuxno.store",
     "klhczqubhsjgi.store",
     "klhhiezuiaykb.site",
@@ -22501,6 +22589,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "kzvfolheruocg.space",
     "kzwdefpmhdwct.online",
     "kzwopyeziioee.space",
+)
+private fun filterChunk45() = setOf(
     "kzxwkvkvdyzus.online",
     "kzyb5utt29fpgycpk29j5c791oyb65yoxw.cfd",
     "kzzxfwvwxbfuu.website",
@@ -23001,6 +23091,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "lethargyplatingsatin.com",
     "lethesboneen.shop",
     "letitnews.com",
+)
+private fun filterChunk46() = setOf(
     "letitredir.com",
     "letmenowme.biz",
     "letmetralala.com",
@@ -23501,6 +23593,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "lmdysqcmtinre.online",
     "lmeivxuejjbol.space",
     "lmeywaganksaf.website",
+)
+private fun filterChunk47() = setOf(
     "lmfbutkwjiiay.site",
     "lmfpdpmkxgcix.site",
     "lmftzfphbqbff.online",
@@ -24001,6 +24095,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "luwiandihely.cyou",
     "luwjcqbkeeeni.site",
     "luxadv.com",
+)
+private fun filterChunk48() = setOf(
     "luxatenowness.com",
     "luxcdn.com",
     "luxins.net",
@@ -24501,6 +24597,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "mashrudramm.cyou",
     "maskcubical.cfd",
     "maskedpairedredsear.cyou",
+)
+private fun filterChunk49() = setOf(
     "maskermixedlyglucid.qpon",
     "maskinglobulescoenoby.qpon",
     "masklink.org",
@@ -25001,6 +25099,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "mgfovsauwpkkp.website",
     "mghkpg.com",
     "mgid.com",
+)
+private fun filterChunk50() = setOf(
     "mgidrskyzsbjc.store",
     "mgieqnribzfxq.space",
     "mgivusiufzagm.space",
@@ -25501,6 +25601,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "mokevansirerester.cyou",
     "mokiehodjzotc.space",
     "mokihiparetic.cfd",
+)
+private fun filterChunk51() = setOf(
     "mokshatuguirowty.cyou",
     "molashakoes.cyou",
     "molavedoors.cfd",
@@ -26001,6 +26103,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "musgdweqsamdg.online",
     "mushhurried.com",
     "mushlaregrass.com",
+)
+private fun filterChunk52() = setOf(
     "mushroomallocationfooting.com",
     "mushroomreclaimschnapps.com",
     "mushyyoung.com",
@@ -26501,6 +26605,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "nearlyoffenderimpure.com",
     "nearonbosom.com",
     "neastrigal.cfd",
+)
+private fun filterChunk53() = setOf(
     "neat-period.com",
     "neat-price.com",
     "neatenpoiser.cfd",
@@ -27001,6 +27107,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "nmlsdfybzuqta.space",
     "nmluwlxnolamc.website",
     "nmonomqmojouo.site",
+)
+private fun filterChunk54() = setOf(
     "nmroutvgijplm.space",
     "nmtjuybtnyuxi.website",
     "nmukovjaiytyt.space",
@@ -27501,6 +27609,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "nxhkagcslidhv.website",
     "nxi7iwgzie55u8zzcfn3mt9bjefw67o6bnevj.cfd",
     "nxirjotovfnvh.space",
+)
+private fun filterChunk55() = setOf(
     "nxiybblfblloz.online",
     "nxksydvpyedbz.online",
     "nxmpmugazsghw.website",
@@ -28001,6 +28111,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "ohrdsplu.com",
     "ohrkasgzia.in",
     "ohrwqkwiylehz.space",
+)
+private fun filterChunk56() = setOf(
     "ohsydmkucyzsm.space",
     "ohtctjiuow.com",
     "ohvvvmxtyzvix.online",
@@ -28501,6 +28613,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "origanswaiver.cfd",
     "origin1266.fun",
     "origin8888.com",
+)
+private fun filterChunk57() = setOf(
     "origintube.com",
     "origunix.com",
     "orinryesope.org",
@@ -29001,6 +29115,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "pacvrvuworosd.website",
     "paddleweekendnudge.com",
     "padgzdbyelrca.online",
+)
+private fun filterChunk58() = setOf(
     "padinventoryvile.com",
     "padlockmanners.com",
     "padsabs.com",
@@ -29501,6 +29617,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "pectensherder.cfd",
     "pectinweskits.com",
     "pectosealvia.click",
+)
+private fun filterChunk59() = setOf(
     "peculiargentleman.com",
     "pedagogashamnu.cyou",
     "pedamarshal.cyou",
@@ -30001,6 +30119,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "pinchingrapacitydragged.com",
     "pinchunnecessaryaggregate.com",
     "pindarigaff.cfd",
+)
+private fun filterChunk60() = setOf(
     "pine-assets.space",
     "pineegypt.com",
     "pinemonumentssaxophone.com",
@@ -30501,6 +30621,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "polosanitizertrusting.com",
     "poloumbril.com",
     "polskacha.shop",
+)
+private fun filterChunk61() = setOf(
     "polsterquintet.com",
     "polyad.net",
     "polydarth.com",
@@ -31001,6 +31123,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "proasuresh.com",
     "probablebassinvoke.com",
     "probalanvils.cfd",
+)
+private fun filterChunk62() = setOf(
     "probatahuman.shop",
     "probationshacksaint.com",
     "probationsheer.com",
@@ -31501,6 +31625,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "purposeswage.com",
     "purshiakalam.cfd",
     "pursuedcovering.com",
+)
+private fun filterChunk63() = setOf(
     "pursuingconjunction.com",
     "purtygoudy.com",
     "pururin.to",
@@ -32001,6 +32127,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "qmmztkhedfghz.online",
     "qmnjvczfauxbb.site",
     "qmrelvbjbzjew.top",
+)
+private fun filterChunk64() = setOf(
     "qmrelvevwlwlw.top",
     "qmuxupabzgxlp.website",
     "qmvwjbawxsese.site",
@@ -32501,6 +32629,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "radiusfellowship.com",
     "radiusix.net",
     "radiusmarketing.com",
+)
+private fun filterChunk65() = setOf(
     "raeavmvblsahe.site",
     "raecvksiazbwe.website",
     "raejvjtrqqchp.space",
@@ -33001,6 +33131,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "reedthatm.biz",
     "reefsetupaccidentally.com",
     "reefunderage.com",
+)
+private fun filterChunk66() = setOf(
     "reekonefoldonefoldslang.com",
     "reekspanakchorti.cyou",
     "reelectjon.cfd",
@@ -33501,6 +33633,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "rhizopiuniquezurich.cyou",
     "rhjuemstwodrh.space",
     "rhnoikbhtktjx.space",
+)
+private fun filterChunk67() = setOf(
     "rhnrzqbydtuxc.space",
     "rhnwjjffbdcra.site",
     "rhnyglwshzaya.website",
@@ -34001,6 +34135,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "rps-p2.rockpapershotgun.com",
     "rps-uk.rockpapershotgun.com",
     "rpts.org",
+)
+private fun filterChunk68() = setOf(
     "rpuazufhgjmdx.space",
     "rpueeoqgaixcb.website",
     "rpwmoogfutpdh.space",
@@ -34501,6 +34637,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "saggedwent.cfd",
     "saggersyaupons.cyou",
     "saggrowledetc.com",
+)
+private fun filterChunk69() = setOf(
     "saghandkerchief.com",
     "sagierplugger.com",
     "saharanrewin.com",
@@ -35001,6 +35139,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "seatsnort.qpon",
     "seavyluxusreearn.cyou",
     "sebaitbedmate.cyou",
+)
+private fun filterChunk70() = setOf(
     "sebsivtovqmnd.website",
     "secancylogjam.qpon",
     "secancysensualperche.cfd",
@@ -35501,6 +35641,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "shinglerid.com",
     "shinnychindiswung.qpon",
     "shinsmorena.shop",
+)
+private fun filterChunk71() = setOf(
     "shiny-toe.com",
     "shinybirdwhispered.com",
     "shipfa.st",
@@ -36001,6 +36143,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "slcuse.com",
     "sleazytaste.com",
     "sledconveniencestuff.com",
+)
+private fun filterChunk72() = setOf(
     "sleddedtare.shop",
     "sledfoolinfo.com",
     "sledgeshombres.qpon",
@@ -36501,6 +36645,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "sorningkickup.qpon",
     "sorochesphagia.cfd",
     "sorrilylivyershape.cyou",
+)
+private fun filterChunk73() = setOf(
     "sorrowdefinedasterisk.com",
     "sorrowful-control.pro",
     "sorryfearknockout.com",
@@ -37001,6 +37147,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "stackoverflow.com",
     "stackrealreliant.com",
     "stacksdrill.qpon",
+)
+private fun filterChunk74() = setOf(
     "stackshare.io",
     "stackupruckinglingier.qpon",
     "stackwitotopolices.qpon",
@@ -37501,6 +37649,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "subdatejutties.com",
     "subdividecola.com",
     "subduedetrude.shop",
+)
+private fun filterChunk75() = setOf(
     "subduessheath.qpon",
     "subfaceunchild.qpon",
     "subgcutler.cfd",
@@ -38001,6 +38151,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "syyynjvgdbmtj.online",
     "szblepeqqktbp.online",
     "szboqosgaumos.space",
+)
+private fun filterChunk76() = setOf(
     "szbvhslrhfuni.site",
     "szdbhgdjlzkpk.space",
     "szdikxkbkfcwd.store",
@@ -38501,6 +38653,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "tenablenerite.qpon",
     "tenadfpgwocuw.website",
     "tenantrip.com",
+)
+private fun filterChunk77() = setOf(
     "tenchchamma.qpon",
     "tend-new.com",
     "tenddesigner.com",
@@ -39001,6 +39155,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "tiznmykuxnu.in",
     "tizzywaygang.shop",
     "tjajxvdaqaywp.online",
+)
+private fun filterChunk78() = setOf(
     "tjeanrwikjcum.site",
     "tjfexarlpotem.space",
     "tjhoocqyksmsm.site",
@@ -39501,6 +39657,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "tracks20.com",
     "tracksfaster.com",
     "tracksgloss.com",
+)
+private fun filterChunk79() = setOf(
     "trackspeeder.com",
     "trackstracker.com",
     "tracktds.com",
@@ -40001,6 +40159,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "tumri.net",
     "tumuliapodia.cfd",
     "tumultdisciple.com",
+)
+private fun filterChunk80() = setOf(
     "tunabushestaking.com",
     "tunagrownupjeer.com",
     "tunapier.com",
@@ -40501,6 +40661,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "uighnhsbatmdf.store",
     "uighurestopamiga.qpon",
     "uigxkdqdouweq.online",
+)
+private fun filterChunk81() = setOf(
     "uiizrrfcncovu.site",
     "uikosfascqisl.space",
     "uildfordgovery.com",
@@ -41001,6 +41163,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "untriedcause.pro",
     "untristseaside.com",
     "untruecompatibletype.com",
+)
+private fun filterChunk82() = setOf(
     "untrueknuckle.com",
     "untypedgyratedeltaic.cyou",
     "unurbanjowser.cyou",
@@ -41501,6 +41665,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "uzxksecxqrchr.online",
     "uzzxkatxegdzh.website",
     "v.adblockultimate.net",
+)
+private fun filterChunk83() = setOf(
     "v.ctrl.blog",
     "v1pmqcgkfoghr374olwyho.cfd",
     "v2006.com",
@@ -42001,6 +42167,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "vigassaffron.qpon",
     "vigilancebreaking.com",
     "vigognecerning.cyou",
+)
+private fun filterChunk84() = setOf(
     "vigorous-average.com",
     "vigtwjvdkhvpr.space",
     "vihmqpamywaso.space",
@@ -42501,6 +42669,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "vvaervdbcntvs.online",
     "vvcszpzpuceps.space",
     "vvewkblqoyjyq.top",
+)
+private fun filterChunk85() = setOf(
     "vvfndxeumlfbn.com",
     "vvgnyrqelaveh.space",
     "vvjacrtsivivq.online",
@@ -43001,6 +43171,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "wearadmiration.com",
     "wearbald.care",
     "wearbulbed.com",
+)
+private fun filterChunk86() = setOf(
     "weardogtiepirned.cfd",
     "wearinessattached.com",
     "wearinessgiddy.com",
@@ -43501,6 +43673,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "wingsmob.com",
     "wingsshaggy.com",
     "wingymallees.com",
+)
+private fun filterChunk87() = setOf(
     "winkletimburse.cfd",
     "winksieniteretired.qpon",
     "winnedhetchel.qpon",
@@ -44001,6 +44175,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "writerfuneral.com",
     "writhalexine.shop",
     "writhehawm.com",
+)
+private fun filterChunk88() = setOf(
     "writhembowel.shop",
     "writhercohunes.cfd",
     "writhhilloed.qpon",
@@ -44501,6 +44677,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "xir6hny6lxxpu5o2un1t.cfd",
     "xiroiirhaqhru.space",
     "xirugcrbfagsb.space",
+)
+private fun filterChunk89() = setOf(
     "xismhhxnxzfdj.online",
     "xitsievucdlde.space",
     "xivledoyfnbjx.space",
@@ -45001,6 +45179,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "yandexcdn.com",
     "yandfartoomanyrel.com",
     "yanmysipmhlgg.space",
+)
+private fun filterChunk90() = setOf(
     "yannqrnohpakv.space",
     "yaoeoownhrjxe.space",
     "yaouoyrfkkswu.site",
@@ -45501,6 +45681,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "yowleytapeta.shop",
     "yowrekvnrlcdz.site",
     "yowsdevata.qpon",
+)
+private fun filterChunk91() = setOf(
     "yowzabrr.com",
     "yoxdiker.qpon",
     "yoxgbiywfdlsd.online",
@@ -46001,6 +46183,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "zgwoziiwdhuhi.online",
     "zgxzeicunptms.store",
     "zgyrvygvthohy.site",
+)
+private fun filterChunk92() = setOf(
     "zgywtizyoykmw.site",
     "zhaner.xyz",
     "zhcyrfxkupdvs.store",
@@ -46501,6 +46685,8 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "zxuknfffkemse.space",
     "zxvxukirgmomz.site",
     "zxzbjqoyojpza.site",
+)
+private fun filterChunk93() = setOf(
     "zyavhhgzkdjfu.space",
     "zyblzrevmklzw.top",
     "zybrdr.com",
@@ -46550,3 +46736,7 @@ internal val BUNDLED_FILTER_DOMAINS = setOf(
     "zzzmjfixezere.site",
     "zzzmxvoxooaat.site",
 )
+
+internal val BUNDLED_FILTER_DOMAINS: Set<String> by lazy {
+    listOf(filterChunk0(),filterChunk1(),filterChunk2(),filterChunk3(),filterChunk4(),filterChunk5(),filterChunk6(),filterChunk7(),filterChunk8(),filterChunk9(),filterChunk10(),filterChunk11(),filterChunk12(),filterChunk13(),filterChunk14(),filterChunk15(),filterChunk16(),filterChunk17(),filterChunk18(),filterChunk19(),filterChunk20(),filterChunk21(),filterChunk22(),filterChunk23(),filterChunk24(),filterChunk25(),filterChunk26(),filterChunk27(),filterChunk28(),filterChunk29(),filterChunk30(),filterChunk31(),filterChunk32(),filterChunk33(),filterChunk34(),filterChunk35(),filterChunk36(),filterChunk37(),filterChunk38(),filterChunk39(),filterChunk40(),filterChunk41(),filterChunk42(),filterChunk43(),filterChunk44(),filterChunk45(),filterChunk46(),filterChunk47(),filterChunk48(),filterChunk49(),filterChunk50(),filterChunk51(),filterChunk52(),filterChunk53(),filterChunk54(),filterChunk55(),filterChunk56(),filterChunk57(),filterChunk58(),filterChunk59(),filterChunk60(),filterChunk61(),filterChunk62(),filterChunk63(),filterChunk64(),filterChunk65(),filterChunk66(),filterChunk67(),filterChunk68(),filterChunk69(),filterChunk70(),filterChunk71(),filterChunk72(),filterChunk73(),filterChunk74(),filterChunk75(),filterChunk76(),filterChunk77(),filterChunk78(),filterChunk79(),filterChunk80(),filterChunk81(),filterChunk82(),filterChunk83(),filterChunk84(),filterChunk85(),filterChunk86(),filterChunk87(),filterChunk88(),filterChunk89(),filterChunk90(),filterChunk91(),filterChunk92(),filterChunk93()).flatten().toSet()
+}

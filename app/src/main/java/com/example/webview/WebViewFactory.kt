@@ -86,8 +86,9 @@ object WebViewFactory {
             setGeolocationEnabled(!isIncognito)
             saveFormData = !isIncognito
 
-            // Battery saving: prevent auto-playing background media & unsolicited popups
-            mediaPlaybackRequiresUserGesture = true
+            // Permite que un audio/video iniciado por el usuario continúe al apagar la pantalla.
+            // La reproducción automática no se fuerza: cada sitio conserva sus propias reglas.
+            mediaPlaybackRequiresUserGesture = false
             javaScriptCanOpenWindowsAutomatically = false
 
             // Smooth zoom support

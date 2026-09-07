@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AeroWeb</string>
+    <string name="app_name">Clave Web</string>
     <string name="search_or_enter_address">Search or type URL</string>
     <string name="new_tab">New Tab</string>
     <string name="new_incognito_tab">New Incognito Tab</string>
@@ -23,7 +23,7 @@
     <string name="bookmark_removed">Bookmark removed</string>
     <string name="download_started">Download started</string>
     <string name="scan_qr_code">Scan QR Code</string>
-    <string name="about_app">Acerca de AeroWeb</string>
+    <string name="about_app">Acerca de Clave Web</string>
     <string name="credits">Créditos</string>
     <string name="legal_notice">Aviso Legal y Descargo</string>
     <string name="creator_clave_argentina">La Clave Argentina</string>

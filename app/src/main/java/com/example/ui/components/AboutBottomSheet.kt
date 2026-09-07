@@ -94,7 +94,7 @@ fun AboutBottomSheet(
                     )
                     Spacer(modifier = Modifier.width(10.dp))
                     Text(
-                        text = "Acerca de AeroWeb",
+                        text = "Acerca de Clave Web",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold
                     )
@@ -147,7 +147,7 @@ fun AboutBottomSheet(
                     Spacer(modifier = Modifier.height(12.dp))
 
                     Text(
-                        text = "AeroWeb Browser",
+                        text = "Clave Web",
                         style = MaterialTheme.typography.headlineSmall,
                         fontWeight = FontWeight.ExtraBold,
                         color = MaterialTheme.colorScheme.onSurface
@@ -267,7 +267,7 @@ fun AboutBottomSheet(
                     LegalParagraph(
                         icon = Icons.Default.Policy,
                         title = "Privacidad y Manejo de Datos Locales",
-                        content = "AeroWeb no recopila ni comercializa información personal de navegación. Todos los datos de historial, cookies, descargas y marcadores se guardan de forma local en el dispositivo del usuario y pueden ser purgados en cualquier instante desde el menú de configuración."
+                        content = "Clave Web no recopila ni comercializa información personal de navegación. Todos los datos de historial, cookies, descargas y marcadores se guardan de forma local en el dispositivo del usuario y pueden ser purgados en cualquier instante desde el menú de configuración."
                     )
                 }
             }

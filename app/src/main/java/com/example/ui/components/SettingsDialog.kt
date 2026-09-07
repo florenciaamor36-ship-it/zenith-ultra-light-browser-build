@@ -342,7 +342,7 @@ fun SettingsDialog(
                     Spacer(modifier = Modifier.width(12.dp))
                     Column(modifier = Modifier.weight(1f)) {
                         Text(
-                            text = "Acerca de AeroWeb",
+                            text = "Acerca de Clave Web",
                             style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.Bold
                         )

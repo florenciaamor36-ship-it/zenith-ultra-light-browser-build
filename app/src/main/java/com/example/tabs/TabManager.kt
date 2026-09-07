@@ -5,6 +5,8 @@ import android.content.ComponentCallbacks2
 import android.graphics.Bitmap
 import android.webkit.CookieManager
 import android.webkit.WebStorage
+import org.json.JSONArray
+import org.json.JSONObject
 import com.example.webview.WebViewFactory
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -27,14 +29,41 @@ import java.util.UUID
 class TabManager(private val context: Context) {
     private val statePrefs = context.getSharedPreferences("aero_web_state", Context.MODE_PRIVATE)
 
-    private val _tabs = MutableStateFlow<List<WebTab>>(emptyList())
+    private val _tabs = MutableStateFlow<List<WebTab>>(restoreTabs())
     val tabs: StateFlow<List<WebTab>> = _tabs.asStateFlow()
 
-    private val _activeTabId = MutableStateFlow<String>("")
+    private val _activeTabId = MutableStateFlow(statePrefs.getString("active_tab", "") ?: "")
     val activeTabId: StateFlow<String> = _activeTabId.asStateFlow()
 
     val activeTab: WebTab?
         get() = _tabs.value.find { it.id == _activeTabId.value }
+
+    private fun restoreTabs(): List<WebTab> = runCatching {
+        val raw = statePrefs.getString("tabs", null) ?: return emptyList()
+        val json = JSONArray(raw)
+        (0 until json.length()).mapNotNull { i ->
+            val item = json.getJSONObject(i)
+            val url = item.optString("url", "")
+            if (url.isBlank()) null else WebTab(
+                id = item.optString("id", UUID.randomUUID().toString()),
+                title = item.optString("title", "New Tab"), url = url,
+                isDesktopMode = item.optBoolean("desktop", false),
+                isDarkModeEnabled = item.optBoolean("dark", false),
+                textZoom = item.optInt("zoom", 100)
+            )
+        }
+    }.getOrDefault(emptyList())
+
+    private fun persistTabs() {
+        val json = JSONArray()
+        _tabs.value.filterNot { it.isIncognito }.forEach { tab ->
+            json.put(JSONObject().apply {
+                put("id", tab.id); put("title", tab.title); put("url", tab.url)
+                put("desktop", tab.isDesktopMode); put("dark", tab.isDarkModeEnabled); put("zoom", tab.textZoom)
+            })
+        }
+        statePrefs.edit().putString("tabs", json.toString()).putString("active_tab", _activeTabId.value).apply()
+    }
 
     /**
      * Creates a new web tab.
@@ -58,6 +87,7 @@ class TabManager(private val context: Context) {
 
         _tabs.update { it + newTab }
         _activeTabId.value = newTab.id
+        persistTabs()
         return newTab
     }
 
@@ -71,6 +101,7 @@ class TabManager(private val context: Context) {
         activeTab?.webView?.onPause()
 
         _activeTabId.value = tabId
+        persistTabs()
 
         // Resume new tab
         activeTab?.webView?.onResume()
@@ -168,6 +199,7 @@ class TabManager(private val context: Context) {
                 }
             }
         }
+        persistTabs()
     }
 
     fun updateFavicon(tabId: String, favicon: Bitmap?) {

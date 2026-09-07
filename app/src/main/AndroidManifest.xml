@@ -21,6 +21,7 @@
 
     <!-- Notifications for Download Manager on Android 13+ -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <!-- Storage Permissions for legacy & Scoped Storage -->
     <uses-permission

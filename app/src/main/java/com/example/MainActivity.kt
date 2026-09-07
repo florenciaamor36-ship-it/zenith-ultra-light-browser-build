@@ -117,7 +117,7 @@ import com.example.webview.AeroWebViewClient
 import com.example.webview.WebViewFactory
 
 /**
- * AeroWeb Browser - High-Performance Android Web Browser.
+ * AeroWeb - High-Performance Android Web Browser.
  */
 class MainActivity : ComponentActivity() {
 
@@ -485,6 +485,18 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    override fun onPause() {
+        // No pausar el WebView activo: permite que el audio iniciado por el usuario continúe
+        // cuando la app queda en segundo plano o se apaga la pantalla.
+        viewModel.tabManager.activeTab?.webView?.onResume()
+        super.onPause()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.tabManager.activeTab?.webView?.onResume()
     }
 
     override fun onNewIntent(intent: Intent) {

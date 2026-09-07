@@ -3,6 +3,11 @@ package com.example
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.ActivityInfo
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.media.session.MediaSession
+import android.media.session.PlaybackState
+import android.os.Build
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
@@ -123,6 +128,8 @@ class MainActivity : ComponentActivity() {
 
     private val viewModel: BrowserViewModel by viewModels()
     private var fileUploadCallback: ValueCallback<Array<Uri>>? = null
+    private var mediaSession: MediaSession? = null
+    private val mediaChannelId = "clave_web_media"
 
     // Activity Result Launcher for WebView File Uploads
     private val fileChooserLauncher = registerForActivityResult(
@@ -141,6 +148,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+        setupMediaControls()
 
         // Handle incoming URL intents (from shortcuts or other apps)
         handleIntent(intent)
@@ -485,6 +493,29 @@ class MainActivity : ComponentActivity() {
                 )
             }
         }
+    }
+
+    private fun setupMediaControls() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val manager = getSystemService(NotificationManager::class.java)
+            manager.createNotificationChannel(NotificationChannel(mediaChannelId, "Reproducción multimedia", NotificationManager.IMPORTANCE_LOW))
+        }
+        mediaSession = MediaSession(this, "ClaveWebMedia").apply {
+            setCallback(object : MediaSession.Callback() {
+                override fun onPlay() { viewModel.tabManager.activeTab?.webView?.evaluateJavascript("document.querySelectorAll('video,audio').forEach(v=>v.play())", null) }
+                override fun onPause() { viewModel.tabManager.activeTab?.webView?.evaluateJavascript("document.querySelectorAll('video,audio').forEach(v=>v.pause())", null) }
+            })
+            setFlags(MediaSession.FLAG_HANDLES_MEDIA_BUTTONS or MediaSession.FLAG_HANDLES_TRANSPORT_CONTROLS)
+            setPlaybackState(PlaybackState.Builder().setActions(PlaybackState.ACTION_PLAY or PlaybackState.ACTION_PAUSE).setState(PlaybackState.STATE_PAUSED, 0L, 1f).build())
+            isActive = true
+        }
+    }
+
+    override fun onDestroy() {
+        mediaSession?.isActive = false
+        mediaSession?.release()
+        mediaSession = null
+        super.onDestroy()
     }
 
     override fun onPause() {

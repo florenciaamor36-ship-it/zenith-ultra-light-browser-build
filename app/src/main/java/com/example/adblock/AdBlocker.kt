@@ -144,6 +144,8 @@ object AdBlocker {
         add("neustar.biz")
         add("tapad.com")
         add("drawbridge.com")
+        // Reglas de dominio generadas desde EasyList y EasyPrivacy.
+        addAll(BUNDLED_FILTER_DOMAINS)
     }
 
     // Fast cache for previously resolved domains to avoid repeated parsing

@@ -167,6 +167,9 @@ class BrowserViewModel(application: Application) : AndroidViewModel(application)
         val newValue = !_isAdBlockerEnabled.value
         _isAdBlockerEnabled.value = newValue
         AdBlocker.isEnabled = newValue
+        // Interception only affects future requests. Reload so the page can
+        // recover immediately when the setting is changed.
+        tabManager.activeTab?.webView?.reload()
     }
 
     fun toggleDarkMode(webView: WebView?) {

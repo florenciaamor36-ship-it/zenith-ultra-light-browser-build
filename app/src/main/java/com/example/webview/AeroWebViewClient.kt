@@ -42,7 +42,11 @@ class AeroWebViewClient(
         view: WebView?,
         request: WebResourceRequest?
     ): WebResourceResponse? {
-        val uri = request?.url ?: return null
+        val req = request ?: return null
+        val uri = req.url
+        // Never block top-level navigation. A blocker must not make a site
+        // appear offline just because its host contains an ad-related token.
+        if (req.isForMainFrame) return super.shouldInterceptRequest(view, request)
         if (AdBlocker.shouldBlock(uri)) {
             // Drop ad/tracker instantly without firing network radio
             return AdBlocker.createEmptyResponse()
@@ -87,13 +91,6 @@ class AeroWebViewClient(
         tabManager.updateNavigationState(tabId, canGoBack, canGoForward)
         tabManager.updateProgress(tabId, 100)
 
-        // Cosmetic protection for ads rendered by the page itself (including common YouTube overlays).
-        view?.evaluateJavascript("""(function(){
-            const s='[id*=ad],[class*=ad-],[class*=ads-],[class*=advert],[class*=sponsor],[class*=promo],.ytp-ad-module,.ytp-ad-overlay-container,.ytp-ad-text';
-            document.querySelectorAll(s).forEach(function(e){e.remove();});
-            document.querySelectorAll('.video-ads,.ytp-ad-player-overlay').forEach(function(e){e.style.display='none';});
-            const skip=document.querySelector('.ytp-ad-skip-button,.ytp-skip-ad-button'); if(skip) skip.click();
-        })();""", null)
         val title = view?.title
         if (!url.isNullOrBlank()) {
             tabManager.updateTitleAndUrl(tabId, title, url)

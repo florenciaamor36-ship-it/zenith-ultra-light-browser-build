@@ -165,14 +165,10 @@ object AdBlocker {
     fun shouldBlock(uri: Uri?): Boolean {
         if (!isEnabled || uri == null) return false
         val host = uri.host?.lowercase() ?: return false
-        if (isAdHost(host)) return true
-        // Block common ad/tracker endpoints hosted on otherwise legitimate domains.
-        val path = (uri.path ?: "").lowercase()
-        val query = (uri.query ?: "").lowercase()
-        return path.contains("/ads/") || path.contains("/adserver") ||
-            path.contains("/advert") || path.contains("/tracking") ||
-            path.contains("/analytics") || query.contains("gclid=") ||
-            query.contains("utm_source=")
+        // Only block known ad/tracker hosts. Do not inspect generic URL paths or
+        // query parameters: legitimate APIs and media manifests often contain
+        // words such as "analytics", "tracking" or "advert".
+        return isAdHost(host)
     }
 
     /**

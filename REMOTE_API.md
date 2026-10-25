@@ -19,3 +19,10 @@ Example:
 curl -H 'Authorization: Bearer YOUR_TOKEN' http://PHONE_LAN_IP:8787/v1/status
 curl -H 'Authorization: Bearer YOUR_TOKEN' -H 'Content-Type: application/json' -d '{"url":"https://example.com"}' http://PHONE_LAN_IP:8787/v1/navigate
 ```
+
+
+## Use from mobile data without a VPS
+
+The phone-hosted API binds to all interfaces on port 8787. For remote access, start a Cloudflare Quick Tunnel from a terminal environment on the phone (for example, Termux) targeting `http://127.0.0.1:8787`; open the generated HTTPS URL plus `/control` from Zapia's browser and enter the Bearer token. Keep AeroWeb and the tunnel process running. Quick Tunnel hostnames are temporary and anyone who has both URL and token can control this personal browser.
+
+The app does not currently install or launch `cloudflared` itself. Quick Tunnel support from Android/Termux is an external runtime prerequisite, not bundled in the APK.

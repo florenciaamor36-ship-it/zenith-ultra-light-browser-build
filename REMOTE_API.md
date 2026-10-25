@@ -6,7 +6,7 @@ Every endpoint except `/health` requires `Authorization: Bearer <token>`:
 
 - `GET /v1/status` — active tab URL/title and endpoint list.
 - `GET /v1/page` — current title, URL and up to 30,000 characters of visible page text.
-- `GET /v1/resources` — scans the current page, scrolls up to 20 viewports to trigger lazy loading, returns up to 300 detected HTTP(S) resource URLs and metadata, and restores scroll position.
+- `GET /v1/resources` — scans the current page, scrolls up to 30 viewports to trigger lazy loading, returns up to 500 detected HTTP(S) resource URLs and metadata, and restores scroll position.
 - `POST /v1/navigate` — JSON `{"url":"https://example.com"}`; accepts HTTP(S).
 - `POST /v1/back` — go back if possible.
 - `POST /v1/scroll` — JSON `{"direction":"down"}` or `{"direction":"up"}`.

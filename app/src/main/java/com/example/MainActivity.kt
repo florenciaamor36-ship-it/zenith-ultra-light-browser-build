@@ -101,6 +101,11 @@ import androidx.compose.ui.viewinterop.AndroidView
 import com.example.download.AeroDownloadManager
 import com.example.capture.CapturedResource
 import com.example.capture.PageResourceScanner
+import com.example.control.BrowserControlServer
+import org.json.JSONArray
+import org.json.JSONObject
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 import com.example.qr.QrScannerSheet
 import com.example.tabs.WebTab
 import com.example.ui.components.AboutBottomSheet
@@ -134,6 +139,7 @@ class MainActivity : ComponentActivity() {
     private var fileUploadCallback: ValueCallback<Array<Uri>>? = null
     private var mediaSession: MediaSession? = null
     private val mediaChannelId = "clave_web_media"
+    private var browserControlServer: BrowserControlServer? = null
 
     // Activity Result Launcher for WebView File Uploads
     private val fileChooserLauncher = registerForActivityResult(
@@ -153,6 +159,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setupMediaControls()
+        startBrowserControlApi()
 
         // Handle incoming URL intents (from shortcuts or other apps)
         handleIntent(intent)
@@ -395,6 +402,14 @@ class MainActivity : ComponentActivity() {
                         onOpenBookmarks = { viewModel.isBookmarksOpen.value = true },
                         onOpenDownloads = { viewModel.isDownloadsOpen.value = true },
                         onFindInPage = { viewModel.startFindInPage() },
+                        onShowApiInfo = {
+                            val token = BrowserControlServer.getOrCreateToken(context)
+                            val addresses = BrowserControlServer.localIpv4Addresses().joinToString("\n") { "http://$it:${BrowserControlServer.PORT}" }.ifBlank { "Conectá el teléfono a una red Wi-Fi" }
+                            android.app.AlertDialog.Builder(context)
+                                .setTitle("API de AeroWeb")
+                                .setMessage("Direcciones disponibles en tu red local:\n$addresses\n\nToken Bearer (guardalo como secreto):\n$token\n\nSe detiene al cerrar la app. Para acceso remoto se necesita un túnel público; la URL del túnel cambiará al reiniciarlo.")
+                                .setPositiveButton("Listo", null).show()
+                        },
                         onCaptureResources = {
                             val webView = activeTab?.webView
                             if (webView == null || activeTab.url.isBlank()) {
@@ -548,6 +563,64 @@ class MainActivity : ComponentActivity() {
             setPlaybackState(PlaybackState.Builder().setActions(PlaybackState.ACTION_PLAY or PlaybackState.ACTION_PAUSE).setState(PlaybackState.STATE_PAUSED, 0L, 1f).build())
             isActive = true
         }
+    }
+
+    private fun startBrowserControlApi() {
+        browserControlServer = BrowserControlServer(this, object : BrowserControlServer.Actions {
+            private fun activeWebView(): WebView? = viewModel.tabManager.activeTab?.webView
+            private fun callJs(script: String): String? {
+                val webView = activeWebView() ?: return null
+                val latch = CountDownLatch(1)
+                var result: String? = null
+                webView.post { webView.evaluateJavascript(script) { value -> result = value; latch.countDown() } }
+                return if (latch.await(12, TimeUnit.SECONDS)) result else null
+            }
+            override fun status(): JSONObject = JSONObject()
+                .put("app", "AeroWeb")
+                .put("active", activeWebView() != null)
+                .put("url", viewModel.tabManager.activeTab?.url ?: "")
+                .put("title", viewModel.tabManager.activeTab?.title ?: "")
+                .put("endpoints", JSONArray(listOf("GET /v1/status", "GET /v1/page", "GET /v1/resources", "POST /v1/navigate", "POST /v1/back", "POST /v1/scroll")))
+
+            override fun navigate(url: String): JSONObject {
+                val parsed = Uri.parse(url.trim())
+                if (parsed.scheme !in listOf("http", "https") || parsed.host.isNullOrBlank())
+                    return JSONObject().put("ok", false).put("error", "Only public HTTP/HTTPS URLs are accepted")
+                val webView = activeWebView() ?: return JSONObject().put("ok", false).put("error", "No active browser tab")
+                webView.post { webView.loadUrl(parsed.toString()) }
+                return JSONObject().put("ok", true).put("url", parsed.toString())
+            }
+
+            override fun back(): JSONObject {
+                val webView = activeWebView() ?: return JSONObject().put("ok", false).put("error", "No active browser tab")
+                webView.post { if (webView.canGoBack()) webView.goBack() }
+                return JSONObject().put("ok", true)
+            }
+
+            override fun page(): JSONObject {
+                val raw = callJs("JSON.stringify({url:location.href,title:document.title,text:(document.body?.innerText||'').slice(0,30000)})")
+                return try { JSONObject(org.json.JSONTokener(raw ?: "null").nextValue() as String) }
+                    catch (_: Exception) { JSONObject().put("error", "Page data unavailable") }
+            }
+
+            override fun resources(): JSONArray {
+                val webView = activeWebView() ?: return JSONArray()
+                val latch = CountDownLatch(1)
+                var result: JSONArray? = null
+                webView.post { PageResourceScanner.scan(webView) { items ->
+                    result = JSONArray().also { array -> items.forEach { array.put(JSONObject().put("url",it.url).put("kind",it.kind).put("mimeType",it.mimeType).put("fileName",it.fileName)) } }
+                    latch.countDown()
+                } }
+                return if (latch.await(35, TimeUnit.SECONDS)) result ?: JSONArray() else JSONArray()
+            }
+
+            override fun scroll(direction: String): JSONObject {
+                val webView = activeWebView() ?: return JSONObject().put("ok", false).put("error", "No active browser tab")
+                val y = if (direction == "up") -700 else 700
+                webView.post { webView.evaluateJavascript("window.scrollBy(0,$y)", null) }
+                return JSONObject().put("ok", true).put("direction", if (direction == "up") "up" else "down")
+            }
+        }).also { it.start(fi.iki.elonen.NanoHTTPD.SOCKET_READ_TIMEOUT, false) }
     }
 
     override fun onDestroy() {

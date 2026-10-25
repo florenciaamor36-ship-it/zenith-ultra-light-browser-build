@@ -65,6 +65,8 @@ import androidx.compose.material.icons.filled.Security
 import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material.icons.filled.Speed
 import androidx.compose.material.icons.filled.VisibilityOff
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -97,6 +99,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
 import com.example.download.AeroDownloadManager
+import com.example.capture.CapturedResource
+import com.example.capture.PageResourceScanner
 import com.example.qr.QrScannerSheet
 import com.example.tabs.WebTab
 import com.example.ui.components.AboutBottomSheet
@@ -157,6 +161,7 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 val coroutineScope = rememberCoroutineScope()
                 val context = LocalContext.current
+                var capturedResources by remember { mutableStateOf<List<CapturedResource>?>(null) }
 
                 val tabs by viewModel.tabs.collectAsState()
                 val activeTabId by viewModel.activeTabId.collectAsState()
@@ -390,6 +395,18 @@ class MainActivity : ComponentActivity() {
                         onOpenBookmarks = { viewModel.isBookmarksOpen.value = true },
                         onOpenDownloads = { viewModel.isDownloadsOpen.value = true },
                         onFindInPage = { viewModel.startFindInPage() },
+                        onCaptureResources = {
+                            val webView = activeTab?.webView
+                            if (webView == null || activeTab.url.isBlank()) {
+                                Toast.makeText(context, "No hay una página cargada para capturar", Toast.LENGTH_SHORT).show()
+                            } else {
+                                // Scanner returns the collected resource list on the WebView UI thread.
+                                PageResourceScanner.scan(webView) { resources ->
+                                    capturedResources = resources
+                                    if (resources.isEmpty()) Toast.makeText(context, "No se encontraron recursos descargables", Toast.LENGTH_LONG).show()
+                                }
+                            }
+                        },
                         onTranslate = {
                             if (activeTab != null) {
                                 BrowserTools.translatePage(activeTab.webView, activeTab.url)
@@ -413,6 +430,28 @@ class MainActivity : ComponentActivity() {
                         onOpenSettings = { viewModel.isSettingsOpen.value = true },
                         onOpenAbout = { viewModel.isAboutOpen.value = true },
                         onDismiss = { viewModel.isMenuOpen.value = false }
+                    )
+                }
+
+                capturedResources?.let { resources ->
+                    AlertDialog(
+                        onDismissRequest = { capturedResources = null },
+                        title = { Text("Recursos encontrados") },
+                        text = { Text("Se encontraron ${resources.size} recursos HTTP/HTTPS en la página y su contenido cargado. Al continuar, AeroWeb los agregará a Descargas. Algunos sitios pueden requerir sesión o bloquear archivos.") },
+                        confirmButton = {
+                            TextButton(onClick = {
+                                val webView = activeTab?.webView
+                                val ua = webView?.settings?.userAgentString
+                                val count = resources.size
+                                resources.forEach { item ->
+                                    val safeName = item.fileName.replace(Regex("[^A-Za-z0-9._() -]"), "_").take(100).ifBlank { "web-resource" }
+                                    downloadManager.enqueueDownload(item.url, ua, safeName, item.mimeType.ifBlank { null }, -1L)
+                                }
+                                capturedResources = null
+                                Toast.makeText(context, "Se enviaron $count recursos a Descargas", Toast.LENGTH_LONG).show()
+                            }) { Text("Descargar todo") }
+                        },
+                        dismissButton = { TextButton(onClick = { capturedResources = null }) { Text("Cancelar") } }
                     )
                 }
 

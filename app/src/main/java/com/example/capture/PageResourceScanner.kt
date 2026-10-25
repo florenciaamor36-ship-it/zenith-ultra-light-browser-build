@@ -29,6 +29,7 @@ object PageResourceScanner {
     fun scan(webView: WebView, callback: (List<CapturedResource>) -> Unit) {
         val startY = webView.scrollY
         var step = 0
+        webView.evaluateJavascript("window.__aeroCaptureStartY=window.scrollY", null)
         fun advance() {
             if (step >= MAX_SCROLL_STEPS || webView.scrollY + webView.height >= webView.contentHeight * webView.scale - 2) {
                 webView.evaluateJavascript("window.scrollTo(0,window.__aeroCaptureStartY||0); $scanScript") { raw -> callback(decode(raw)) }

@@ -18,6 +18,7 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material.icons.filled.Collections
+import androidx.compose.material.icons.filled.Api
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DesktopMac
 import androidx.compose.material.icons.filled.Download
@@ -90,6 +91,7 @@ fun BrowserMenuSheet(
     onOpenDownloads: () -> Unit,
     onFindInPage: () -> Unit,
     onCaptureResources: () -> Unit,
+    onShowApiInfo: () -> Unit,
     onTranslate: () -> Unit,
     onSavePdf: () -> Unit,
     onAddShortcut: () -> Unit,
@@ -298,6 +300,14 @@ fun BrowserMenuSheet(
                     onOpenBookmarks()
                 },
                 testTag = "menu_bookmarks"
+            )
+
+            MenuItemRow(
+                icon = Icons.Default.Api,
+                title = "Conector para asistentes",
+                subtitle = "API local protegida por token; puerto 8787",
+                onClick = onShowApiInfo,
+                testTag = "menu_api_info"
             )
 
             MenuItemRow(

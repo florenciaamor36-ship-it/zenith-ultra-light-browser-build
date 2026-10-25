@@ -30,6 +30,9 @@ class BrowserControlServer(
     private val token = getOrCreateToken(context)
 
     override fun serve(session: IHTTPSession): Response {
+        if (session.method == Method.GET && (session.uri == "/" || session.uri == "/control")) {
+            return newFixedLengthResponse(Response.Status.OK, "text/html; charset=utf-8", CONTROL_PANEL)
+        }
         if (session.method == Method.OPTIONS) return json(Response.Status.OK, JSONObject().put("ok", true))
         if (session.uri == "/health") return json(Response.Status.OK, JSONObject().put("ok", true).put("service", "aeroweb"))
         val supplied = session.headers["authorization"].orEmpty().removePrefix("Bearer ").toByteArray()
@@ -91,6 +94,28 @@ class BrowserControlServer(
         } catch (_: Exception) { emptyList() }
 
         /** Runs WebView operations on the UI thread and returns their value to an API worker. */
+        private val CONTROL_PANEL = """<!doctype html>
+<html lang="es"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AeroWeb remoto</title><style>
+body{font:16px system-ui;max-width:850px;margin:24px auto;padding:0 16px;background:#10131a;color:#eef2f7}input,button{font:inherit;padding:12px;border-radius:10px;border:1px solid #384252;background:#1a2230;color:inherit}input{width:100%;box-sizing:border-box;margin:6px 0}button{cursor:pointer;margin:5px 4px 5px 0;background:#263b59}#url{width:calc(100% - 24px)}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#171d27;padding:14px;border-radius:10px;min-height:120px}.row{display:flex;gap:6px;flex-wrap:wrap}</style>
+<h2>AeroWeb remoto</h2><p>Ingresá el token que muestra el menú «Conector para asistentes».</p>
+<input id="token" type="password" placeholder="Token de acceso"><button onclick="save()">Conectar</button>
+<div class="row"><input id="url" placeholder="https://sitio.com"><button onclick="go()">Navegar</button></div>
+<div class="row"><button onclick="readPage()">Leer página</button><button onclick="back()">Atrás</button><button onclick="scrollPage('down')">Bajar</button><button onclick="scrollPage('up')">Subir</button><button onclick="scan()">Capturar recursos (500 máx.)</button></div>
+<pre id="out">Sin conectar</pre>
+<script>
+const out=document.getElementById('out'),key='aeroweb-token';
+document.getElementById('token').value=sessionStorage.getItem(key)||'';
+function save(){sessionStorage.setItem(key,document.getElementById('token').value);status()}
+async function api(path,method='GET',body){let t=document.getElementById('token').value;if(!t){out.textContent='Ingresá el token.';return null}try{let r=await fetch(path,{method,headers:{'Authorization':'Bearer '+t,'Content-Type':'application/json'},body:body?JSON.stringify(body):undefined});let x=await r.json();if(!r.ok)throw Error(x.error||r.status);return x}catch(e){out.textContent='Error: '+e.message;return null}}
+async function status(){let x=await api('/v1/status');if(x)out.textContent=JSON.stringify(x,null,2)}
+async function go(){let x=await api('/v1/navigate','POST',{url:document.getElementById('url').value});if(x){out.textContent='Navegando… '+JSON.stringify(x);setTimeout(readPage,2500)}}
+async function readPage(){let x=await api('/v1/page');if(x)out.textContent=JSON.stringify(x,null,2)}
+async function back(){let x=await api('/v1/back','POST',{});if(x){out.textContent=JSON.stringify(x);setTimeout(readPage,1200)}}
+async function scrollPage(direction){let x=await api('/v1/scroll','POST',{direction});if(x){out.textContent=JSON.stringify(x);setTimeout(readPage,700)}}
+async function scan(){out.textContent='Buscando recursos…';let x=await api('/v1/resources');if(x)out.textContent=JSON.stringify(x,null,2)}
+</script></html>"""
+
         fun <T> onUi(webView: WebView, block: () -> T): T? {
             if (android.os.Looper.myLooper() == android.os.Looper.getMainLooper()) return block()
             var result: T? = null

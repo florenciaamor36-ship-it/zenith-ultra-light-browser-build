@@ -8,8 +8,8 @@ import org.json.JSONTokener
 
 /** Discovers page resources in the existing WebView. Never clicks controls or bypasses logins/DRM. */
 object PageResourceScanner {
-    const val MAX_RESOURCES = 300
-    private const val MAX_SCROLL_STEPS = 20
+    const val MAX_RESOURCES = 500
+    private const val MAX_SCROLL_STEPS = 30
     private val handler = Handler(Looper.getMainLooper())
 
     private val scanScript = """(function(){
@@ -22,7 +22,7 @@ object PageResourceScanner {
       document.querySelectorAll('link[href]').forEach(x=>{const r=(x.rel||'').toLowerCase();if(['stylesheet','icon','preload','modulepreload'].includes(r))add(x.href,r,x.type||'');});
       performance.getEntriesByType('resource').forEach(x=>add(x.name,x.initiatorType||'resource',''));
       document.querySelectorAll('a[href]').forEach(x=>{if(/\\.(pdf|zip|rar|7z|mp3|mp4|m4a|wav|webm|png|jpe?g|gif|webp|svg|woff2?|ttf|otf)(?:$|[?#])/i.test(x.href))add(x.href,'download','');});
-      return JSON.stringify(Array.from(found.values()).slice(0,300));
+      return JSON.stringify(Array.from(found.values()).slice(0,500));
     })();"""
 
     /** Scrolls a bounded number of viewports to load lazy content, restores position, then scans. */

@@ -313,7 +313,7 @@ fun BrowserMenuSheet(
             MenuItemRow(
                 icon = Icons.Default.Collections,
                 title = "Capturar recursos de la página",
-                subtitle = "Imágenes, medios, scripts y archivos (hasta 300)",
+                subtitle = "Imágenes, medios, scripts y archivos (hasta 500)",
                 onClick = {
                     onDismiss()
                     onCaptureResources()

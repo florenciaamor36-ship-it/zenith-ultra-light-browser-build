@@ -17,6 +17,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.Collections
 import androidx.compose.material.icons.filled.DarkMode
 import androidx.compose.material.icons.filled.DesktopMac
 import androidx.compose.material.icons.filled.Download
@@ -88,6 +89,7 @@ fun BrowserMenuSheet(
     onOpenBookmarks: () -> Unit,
     onOpenDownloads: () -> Unit,
     onFindInPage: () -> Unit,
+    onCaptureResources: () -> Unit,
     onTranslate: () -> Unit,
     onSavePdf: () -> Unit,
     onAddShortcut: () -> Unit,
@@ -296,6 +298,17 @@ fun BrowserMenuSheet(
                     onOpenBookmarks()
                 },
                 testTag = "menu_bookmarks"
+            )
+
+            MenuItemRow(
+                icon = Icons.Default.Collections,
+                title = "Capturar recursos de la página",
+                subtitle = "Imágenes, medios, scripts y archivos (hasta 300)",
+                onClick = {
+                    onDismiss()
+                    onCaptureResources()
+                },
+                testTag = "menu_capture_resources"
             )
 
             MenuItemRow(
